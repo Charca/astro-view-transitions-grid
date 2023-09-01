@@ -1,0 +1,120 @@
+---
+const rows = [
+  {
+    customer: 'Neil Sims',
+    email: 'email@windster.com',
+    price: '$320',
+    imageUrl: 'https://flowbite.com/docs/images/people/profile-picture-1.jpg',
+  },
+  {
+    customer: 'Bonnie Green',
+    email: 'email@windster.com',
+    price: '$3467',
+    imageUrl: 'https://flowbite.com/docs/images/people/profile-picture-3.jpg',
+  },
+  {
+    customer: 'Michael Gough',
+    email: 'email@windster.com',
+    price: '$67',
+    imageUrl: 'https://flowbite.com/docs/images/people/profile-picture-2.jpg',
+  },
+  {
+    customer: 'Lana Byrd',
+    email: 'email@windster.com',
+    price: '$367',
+    imageUrl: 'https://flowbite.com/docs/images/people/profile-picture-4.jpg',
+  },
+  {
+    customer: 'Thomes Lean',
+    email: 'email@windster.com',
+    price: '$2367',
+    imageUrl: 'https://flowbite.com/docs/images/people/profile-picture-5.jpg',
+  },
+]
+---
+
+<div
+  class="absolute h-full w-full bg-zinc-800/70 top-0 bottom-0 z-10 flex items-center justify-center"
+  transition:name="overlay"
+>
+  <div class="max-w-lg bg-white rounded-lg shadow" transition:name="wrapper">
+    <a href="/">
+      <img
+        class="rounded-t-lg"
+        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
+        alt=""
+        transition:name="cover-image"
+      />
+    </a>
+    <div class="min-h-[350px]">
+      <div
+        class="modal-content w-full p-4 rounded-lg shadow sm:p-8"
+        transition:name="modal-content"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <h5 class="text-xl font-bold leading-none text-gray-900">
+            Latest Customers
+          </h5>
+          <a href="#" class="text-sm font-medium text-blue-600 hover:underline">
+            View all
+          </a>
+        </div>
+        <div class="flow-root">
+          <ul role="list" class="divide-y divide-gray-200">
+            {
+              rows.map((row) => (
+                <li class="py-3 sm:py-4">
+                  <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="w-8 h-8 rounded-full"
+                        src={row.imageUrl}
+                        alt={row.customer}
+                      />
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-gray-900 truncate">
+                        {row.customer}
+                      </p>
+                      <p class="text-sm text-gray-500 truncate">{row.email}</p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                      {row.price}
+                    </div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-content {
+    animation:
+      90ms cubic-bezier(0.4, 0, 1, 1) both fade-in,
+      300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-bottom;
+    animation-delay: 250ms;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-from-bottom {
+    from {
+      transform: translateY(30px);
+    }
+  }
+</style>
